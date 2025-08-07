@@ -11,23 +11,31 @@ import tr.unvercanunlu.parking_lot.model.constant.ParkingStatus;
 
 @ToString
 @EqualsAndHashCode
-@Getter
 @RequiredArgsConstructor
-public class ParkingRecord {
+public class Ticket {
 
+  @Getter
   private final long id;
-  private final String carPlate;
+
+  @Getter
+  private final String vehiclePlate;
+
+  @Getter
   private final int spotNo;
 
+  @Getter
   @Setter
   private LocalDateTime startedAt = LocalDateTime.now();
 
+  @Getter
   @Setter
   private LocalDateTime endedAt = null;
 
+  @Getter
   @Setter
   private ParkingStatus status = ParkingStatus.ON_GOING;
 
+  @Getter
   @Setter
   private BigDecimal price = BigDecimal.ZERO;
 

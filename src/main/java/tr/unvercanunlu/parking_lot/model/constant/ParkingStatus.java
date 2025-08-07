@@ -6,7 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 public enum ParkingStatus {
 
@@ -28,11 +30,7 @@ public enum ParkingStatus {
     STATUSES = Collections.unmodifiableMap(map);
   }
 
-  public static Optional<ParkingStatus> of(Character code) {
-    if (code == null) {
-      throw new IllegalArgumentException("Code missing!");
-    }
-
+  public static Optional<ParkingStatus> of(char code) {
     return Optional.ofNullable(
         STATUSES.get(code)
     );

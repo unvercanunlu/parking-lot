@@ -5,27 +5,18 @@ import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import tr.unvercanunlu.parking_lot.model.constant.ParkingStatus;
-import tr.unvercanunlu.parking_lot.model.constant.SpotStatus;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public class EntityFactory {
 
-  public static ParkingSpot createSpot(int spotNo) {
-    ParkingSpot spot = new ParkingSpot(spotNo);
+  public static Ticket createTicket(long ticketId, String vehiclePlate, int spotNo) {
+    Ticket ticket = new Ticket(ticketId, vehiclePlate, spotNo);
 
-    spot.setStatus(SpotStatus.EMPTY);
+    ticket.setStartedAt(LocalDateTime.now());
+    ticket.setStatus(ParkingStatus.ON_GOING);
+    ticket.setPrice(BigDecimal.ZERO);
 
-    return spot;
-  }
-
-  public static ParkingRecord createRecord(long id, String carPlate, int spotNo) {
-    ParkingRecord record = new ParkingRecord(id, carPlate, spotNo);
-
-    record.setStartedAt(LocalDateTime.now());
-    record.setStatus(ParkingStatus.ON_GOING);
-    record.setPrice(BigDecimal.ZERO);
-
-    return record;
+    return ticket;
   }
 
 }
